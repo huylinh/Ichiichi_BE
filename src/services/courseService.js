@@ -183,7 +183,7 @@ let updateProgressCourseService = (course_id) => {
             let course = await db.Passed_Course.findOne({
                 where: {
                     user_id: 1,
-                    id: course_id
+                    course_id: course_id
                 }
             })
 
@@ -198,6 +198,8 @@ let updateProgressCourseService = (course_id) => {
             } else {
                 resolve({
                     errorCode: 1,
+                    type: typeof course_id,
+                    course_id: course_id,
                     message: 'Not found course!'
                 })
             }
